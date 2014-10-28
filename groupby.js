@@ -41,8 +41,9 @@ function generateSlots(dateStart, dateEnd, groupBy)
 }
 
 
-function groupBy(data, startDate, endDate, tsKey,groupDurationSec)
+function groupBy(data, startDate, endDate, tsKey,groupDurationSec,pushTo)
 {
+	pushTo = typeof pushTo !== 'undefined' ? pushTo : 'bottom';
 	var slotsAndOffsets = generateSlots(startDate,endDate, groupDurationSec);
 	var slots = slotsAndOffsets.grid;
 	var offset = slotsAndOffsets.offset;
@@ -51,7 +52,14 @@ function groupBy(data, startDate, endDate, tsKey,groupDurationSec)
 		var key = generateKey(groupDurationSec,data[item][tsKey]-offset,offset)[0];
 		if(slots[key] != undefined)
 		{
-			slots[key].push(data[item]);
+			if(pushTo == 'top')
+			{
+				slots[key].unshift(data[item]);
+			}
+			else
+			{
+				slots[key].push(data[item]);
+			}
 		}
 	}
 	return(slots);	
