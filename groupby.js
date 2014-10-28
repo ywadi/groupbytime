@@ -29,7 +29,6 @@ function generateSlots(dateStart, dateEnd, groupBy)
 
 	var shift = dateStart - startHeadKey;
 
-	console.log("Shift: ",shift);
 	var grid = {};
 	while(endKey <= endTailKey)
 	{
@@ -42,7 +41,7 @@ function generateSlots(dateStart, dateEnd, groupBy)
 }
 
 
-function groupBy(data, startDate, endDate, groupDurationSec)
+function groupBy(data, startDate, endDate, tsKey,groupDurationSec)
 {
 	var slotsAndOffsets = generateSlots(startDate,endDate, groupDurationSec);
 	var slots = slotsAndOffsets.grid;
@@ -50,13 +49,12 @@ function groupBy(data, startDate, endDate, groupDurationSec)
 
 	for(item in data)
 	{
-		var key = generateKey(groupDurationSec,data[item].ts,offset)[0];
 
+		var key = generateKey(groupDurationSec,data[item][tsKey],offset)[0];
 		if(slots[key] != undefined)
 		{
 			slots[key].push(data[item]);
 		}
 	}
-
 	return(slots);	
 }
