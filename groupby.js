@@ -11,7 +11,7 @@ exports.groupBy = groupBy;
 
 function generateKey(groupBySeconds , timestamp, offset)
 {
-	var keyDiff = timestamp % groupBySeconds;
+	var keyDiff = (timestamp % groupBySeconds);
 	return [(timestamp - keyDiff)+offset,keyDiff];
 }
 
@@ -46,11 +46,10 @@ function groupBy(data, startDate, endDate, tsKey,groupDurationSec)
 	var slotsAndOffsets = generateSlots(startDate,endDate, groupDurationSec);
 	var slots = slotsAndOffsets.grid;
 	var offset = slotsAndOffsets.offset;
-
 	for(item in data)
 	{
-
-		var key = generateKey(groupDurationSec,data[item][tsKey],offset)[0];
+		var key = generateKey(groupDurationSec,data[item][tsKey]-offset,offset)[0];
+		console.log(new Date(data[item][tsKey])+"===>"+new Date(generateKey(groupDurationSec,data[item][tsKey],0)[0])+"===>"+new Date(key));
 		if(slots[key] != undefined)
 		{
 			slots[key].push(data[item]);
