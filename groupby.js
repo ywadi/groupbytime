@@ -49,7 +49,6 @@ function groupBy(data, startDate, endDate, tsKey,groupDurationSec)
 	for(item in data)
 	{
 		var key = generateKey(groupDurationSec,data[item][tsKey]-offset,offset)[0];
-		console.log(new Date(data[item][tsKey])+"===>"+new Date(generateKey(groupDurationSec,data[item][tsKey],0)[0])+"===>"+new Date(key));
 		if(slots[key] != undefined)
 		{
 			slots[key].push(data[item]);
