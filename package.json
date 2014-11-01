@@ -1,0 +1,30 @@
+{
+  "name": "groupbytime",
+  "version": "0.0.2",
+  "description": "Group an Array by time duration given. Allows the coder for example to group an array by 3.5 minute intervals into groups.",
+  "main": "groupby.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ywadi/groupbytime"
+  },
+  "keywords": [
+    "groupby",
+    "group",
+    "by",
+    "time",
+    "group",
+    "by",
+    "time",
+    "groupby",
+    "time"
+  ],
+  "author": "Yousef Jamal Wadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ywadi/groupbytime/issues"
+  },
+  "homepage": "https://github.com/ywadi/groupbytime"
+}

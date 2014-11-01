@@ -29,7 +29,7 @@ Finally you will need to use the function groupBy(dataArray, startingDateUnixTim
 *Note: That the group by will generate a list of all times within the timeframe and will have data in it, if there is no data for a certain time then it will be empty.*
 
 ```javascript
-var groupby = require("./groupby");
+var groupby = require("groupbytime");
 //TS field added to all records, start and time date added, and asked to group by 5 minutes. 
 console.log(
   groupby.groupBy(
